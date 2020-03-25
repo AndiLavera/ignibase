@@ -1,0 +1,57 @@
+name: ignibase
+version: 0.1.0
+
+authors:
+  - Andrew <awcrotwell@gmail.com>
+
+crystal: 0.33.0
+
+license: UNLICENSED
+
+targets:
+  ignibase:
+    main: src/ignibase.cr
+
+  amber:
+    main: lib/amber/src/amber/cli.cr
+
+dependencies:
+  amber:
+    github: amberframework/amber
+    branch: master
+
+  quartz_mailer:
+    github: amberframework/quartz-mailer
+    version: ~> 0.6.0
+
+  jasper_helpers:
+    github: amberframework/jasper-helpers
+    version: ~> 0.2.5
+
+  citrine-i18n:
+    github: amberframework/citrine-i18n
+    version: 0.4.0
+
+  jennifer:
+    github: imdrasil/jennifer.cr
+    version: 0.8.4
+
+  mochi:
+    github: gitlato/mochi
+    branch: master
+
+  sam:
+    github: imdrasil/sam.cr
+    version: 0.3.2
+
+  jbuilder:
+    github: shootingfly/jbuilder
+
+  kilt:
+    github: jeromegn/kilt
+    version: 0.6.0
+
+development_dependencies:
+  garnet_spec:
+    github: amberframework/garnet-spec
+    version: ~> 0.2.1

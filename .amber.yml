@@ -1,0 +1,5 @@
+type: app
+database: postgres
+language: ecr
+model: jennifer
+recipe: progressive-amber/react-recipe
