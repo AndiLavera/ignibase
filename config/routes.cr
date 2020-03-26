@@ -35,8 +35,8 @@ Amber::Server.configure do
 
   routes :web do
     get "/", ApplicationController, :root
-
     get "/dashboard", ApplicationController, :dashboard
+    get "/dashboard/*", ApplicationController, :dashboard
 
     get "/signin", SessionController, :new
     post "/session", SessionController, :create

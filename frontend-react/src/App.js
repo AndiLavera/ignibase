@@ -14,7 +14,7 @@ import HelloAmber from './components/HelloAmber';
 import HelloReact from './components/HelloReact';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Appbar from './components/AppBar/Frontend.js';
+import Appbar from './components/AppBar/AppBar.js';
 
 export default function App() {
   return (
