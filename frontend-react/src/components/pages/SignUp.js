@@ -123,8 +123,8 @@ const SignUp = () => {
       },
       body: JSON.stringify(inputs)
     })
-    const text = await res.message()
-    handleResponse(res.status, text)
+    const text = await res.text()
+    handleResponse(text.status, text)
   }
 
   return (

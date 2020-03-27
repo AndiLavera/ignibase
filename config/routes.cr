@@ -46,10 +46,13 @@ Amber::Server.configure do
     get "/dashboard/*", ApplicationController, :dashboard
     get "/signup", ApplicationController, :sign_up
 
-    get "/signin", SessionController, :new
+    get "/signin", ApplicationController, :sign_in
     post "/session", SessionController, :create
 
     post "/registration", UserController, :create
+
+    # Passing responsibility of 404 to react router
+    #get "/*", ApplicationController, :root
   end
 
   # Routes for main website
@@ -70,7 +73,9 @@ Amber::Server.configure do
     get "/account", AccountController, :index
     post "/account", AccountController, :create
 
-    post "/signup", UsersController, :create
+    post "/signup", API::V1::UserController, :create
+
+    post "/session", API::V1::SessionController, :create
   end
 
   # Serves static files

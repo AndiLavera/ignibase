@@ -42,8 +42,8 @@ const MainNavBar = (props) => {
         </List>
       <Divider />
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
+        {['Signin', 'Signup'].map((text, index) => (
+          <ListItem component={Link} to={`/${text.toLowerCase()}`} button key={text}>
             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
