@@ -8,6 +8,10 @@ shards:
     github: amberframework/amber-router
     version: 0.3.0
 
+  bindata:
+    github: spider-gazelle/bindata
+    version: 1.2.0
+
   callback:
     github: drujensen/callback
     version: 0.7.1
@@ -64,6 +68,10 @@ shards:
     github: imdrasil/jennifer.cr
     version: 0.8.4
 
+  jwt:
+    github: crystal-community/jwt
+    version: 1.4.0
+
   kilt:
     github: jeromegn/kilt
     version: 0.6.0
@@ -87,6 +95,10 @@ shards:
   mysql:
     github: crystal-lang/crystal-mysql
     version: 0.10.0
+
+  openssl_ext:
+    github: stakach/openssl_ext
+    version: 1.2.0
 
   optarg:
     github: drujensen/optarg

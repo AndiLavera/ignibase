@@ -11,7 +11,7 @@ class CurrentUser < Amber::Pipe::Base
 
     # Omniauthable
     if User.new.responds_to?(:uid)
-    user ||= User.where { _uid == user_id }.first
+      user ||= User.where { _uid == user_id }.first
     end
 
     if user

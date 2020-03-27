@@ -40,6 +40,10 @@ dependencies:
     github: gitlato/mochi
     branch: master
 
+  jwt:
+    github: crystal-community/jwt
+    version: 1.4.0
+
   sam:
     github: imdrasil/sam.cr
     version: 0.3.2

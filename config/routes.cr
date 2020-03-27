@@ -18,6 +18,14 @@ Amber::Server.configure do
     plug Authenticate.new
   end
 
+  pipeline :api_jwt do
+    plug AuthenticateJWT.new
+  end
+
+  pipeline :api_with_key do
+    # plug AuthenticateAPIKey.new
+  end
+
   pipeline :api do
     # plug Amber::Pipe::PoweredByAmber.new
     plug Amber::Pipe::Error.new
@@ -35,30 +43,38 @@ Amber::Server.configure do
 
   routes :web do
     get "/", ApplicationController, :root
-    get "/dashboard", ApplicationController, :dashboard
     get "/dashboard/*", ApplicationController, :dashboard
+    get "/signup", ApplicationController, :sign_up
 
     get "/signin", SessionController, :new
     post "/session", SessionController, :create
-    get "/signup", UserController, :new
+
     post "/registration", UserController, :create
   end
 
-  routes :auth do
-    get "/profile", UserController, :show
-    get "/profile/edit", UserController, :edit
-    patch "/profile", UserController, :update
-    get "/signout", SessionController, :delete
+  # Routes for main website
+  #
+  # Users can sign up, set up dashboard or view documentation
+  # with these routes
+  routes :api_with_jwt do
+    # get "/profile", UserController, :show
+    # get "/profile/edit", UserController, :edit
+    # patch "/profile", UserController, :update
+    # get "/signout", SessionController, :delete
   end
 
-  routes :api, "/api/v1" do
+  # Routes for api
+  #
+  # These are all the endpoints of the service
+  routes :api_with_key, "/api/v1" do
     get "/account", AccountController, :index
     post "/account", AccountController, :create
+
+    post "/signup", UsersController, :create
   end
 
+  # Serves static files
   routes :static do
-    # Each route is defined as follow
-    # verb resource : String, controller : Symbol, action : Symbol
     get "/*", Amber::Controller::Static, :index
   end
 end
