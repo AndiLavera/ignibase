@@ -4,6 +4,10 @@ import './index.css';
 import App from './src/App';
 import { BrowserRouter } from 'react-router-dom';
 
+if(module.hot){
+  module.hot.accept()
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
   <BrowserRouter>

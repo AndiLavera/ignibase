@@ -11,6 +11,14 @@ let config = {
     path: path.resolve(__dirname, '../../public/dist'),
     publicPath: '/dist'
   },
+  devServer: {
+    contentBase: path.join(__dirname, '../../public/dist'),
+    compress: true,
+    port: 9090,
+    after: function(app, server, compiler) {
+      console.log('Webpack Reloaded')
+    }
+  },
   resolve: {
     alias: {
       amber: path.resolve(__dirname, '../../lib/amber/assets/js/amber.js')
@@ -29,6 +37,11 @@ let config = {
         }
       },
       {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+      {
         test: /\.css$/,
         exclude: /node_modules/,
         use: [
@@ -44,6 +57,9 @@ let config = {
         ]
       }
     ]
+  },
+  resolve: {
+    extensions: [ '.tsx', '.ts', '.js' ],
   },
   stats: 'errors-only'
 };
