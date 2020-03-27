@@ -17,7 +17,7 @@ const Routes = (props) => {
         render={(props) => <Home {...props} classes={classes} />}
       />
       <Route
-        exact path='/home'
+        exact path='/contact'
         render={(props) => <Contact {...props} classes={classes} />}
       />
       <Route
