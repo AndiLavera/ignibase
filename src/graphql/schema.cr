@@ -35,7 +35,7 @@ module Ignibase::Schema
     #schema.add_input_type("UserType", UserType)
     schema.query_resolver = QueryType
     schema.mutation_resolver = MutationType
-    # test
+    # test2
     schema
   end
 end
