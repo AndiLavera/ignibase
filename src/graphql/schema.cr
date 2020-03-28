@@ -1,6 +1,5 @@
 # Available Types include:
 # String, Boolean, Int, Float, ID
-
 module Ignibase::Schema
   include ::GraphQL::Schema
 
@@ -17,7 +16,8 @@ module Ignibase::Schema
           user(
             email: String!
             preferences: String
-            full_name: String
+            first_name: String
+            last_name: String
           ): UserType
         }
 
@@ -26,11 +26,13 @@ module Ignibase::Schema
         type UserType {
           email: String
           preferences: String
-          full_name: String
+          first_name: String
+          last_name: String
         }
       }
     )
 
+    #schema.add_input_type("UserType", UserType)
     schema.query_resolver = QueryType
     schema.mutation_resolver = MutationType
     schema

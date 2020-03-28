@@ -5,7 +5,8 @@ class CreateUser < Jennifer::Migration::Base
       t.string :password_digest
       t.timestamp :created_at
       t.timestamp :updated_at
-      t.string :full_name
+      t.string :first_name
+      t.string :last_name
       t.string :old_password
       t.json :preferences
     end

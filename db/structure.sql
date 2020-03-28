@@ -63,8 +63,6 @@ ALTER SEQUENCE public.apps_id_seq OWNED BY public.apps.id;
 
 CREATE TABLE public.apps_users (
     id integer NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
     user_id integer,
     app_id integer
 );
@@ -138,7 +136,8 @@ CREATE TABLE public.users (
     password_digest character varying(254),
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    full_name character varying(254),
+    first_name character varying(254),
+    last_name character varying(254),
     old_password character varying(254),
     preferences json
 );

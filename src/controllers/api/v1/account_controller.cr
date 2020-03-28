@@ -100,7 +100,8 @@ class AccountController < ApplicationController
       required(:app_id)
       required(:email)
       required(:password)
-      optional(:full_name)
+      optional(:first_name)
+      optional(:last_name)
       optional(:password_confirmation)
     end
   end

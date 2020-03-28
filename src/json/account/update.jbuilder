@@ -12,6 +12,7 @@ else
     json.id account.id
     json.email account.email
     json.password account.password
-    json.full_name account.full_name
+    json.first_name account.first_name
+    json.last_name account.last_name
   end
 end

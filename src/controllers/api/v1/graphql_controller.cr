@@ -4,10 +4,10 @@ class GraphQLController < ApplicationController
   include Ignibase::Schema
 
   def index
-    schema.execute(user_params["query"])
+    schema.execute(graphql_params["query"])
   end
 
-  private def user_params
+  private def graphql_params
     params.validation do
       required :query
     end
