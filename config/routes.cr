@@ -51,8 +51,9 @@ Amber::Server.configure do
 
     post "/registration", UserController, :create
 
+    post "/graphql", GraphQLController, :index
     # Passing responsibility of 404 to react router
-    #get "/*", ApplicationController, :root
+    # get "/*", ApplicationController, :root
   end
 
   # Routes for main website

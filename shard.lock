@@ -44,6 +44,10 @@ shards:
     github: amberframework/garnet-spec
     version: 0.2.3
 
+  graphql-crystal:
+    github: ziprandom/graphql-crystal
+    commit: 670bfddb396e33922f5b94f68c11a27dc3846eba
+
   i18n:
     github: TechMagister/i18n.cr
     version: 0.3.1

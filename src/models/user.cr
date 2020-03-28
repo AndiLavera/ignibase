@@ -1,13 +1,8 @@
 class User < ApplicationRecord
   include Mochi
   mochi_jennifer(
-    :authenticable,
-    # :confirmable,
-    # :trackable,
-    # :omniauthable,
-    # :recoverable,
-    # :lockable,
-    # :invitable
+    :authenticable, # :confirmable, :trackable,
+    # :omniauthable, :recoverable, :lockable, :invitable
   )
 
   has_and_belongs_to_many :apps, App

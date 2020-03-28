@@ -55,6 +55,10 @@ dependencies:
     github: jeromegn/kilt
     version: 0.6.0
 
+  graphql-crystal:
+    github: ziprandom/graphql-crystal
+    branch: master
+
 development_dependencies:
   garnet_spec:
     github: amberframework/garnet-spec

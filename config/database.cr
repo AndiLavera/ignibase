@@ -11,5 +11,5 @@ Jennifer::Config.configure do |conf|
   conf.logger.formatter = Logger::Formatter.new do |_, datetime, _, message, io|
     io << datetime.colorize(:cyan) << ": \n" << message.colorize(:light_magenta)
   end
-  conf.logger.level = Logger::DEBUG
+  conf.logger.level = Logger::INFO
 end

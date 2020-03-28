@@ -21,6 +21,16 @@ require "../src/models/**"
 require "../src/pipes/**"
 # End Generator Dependencies
 
+# GraphQL
+#
+# Must be required before the graphql controller
+# but after ApplicationRecord
+require "graphql-crystal"
+require "../src/graphql/queries/*"
+require "../src/graphql/mutations/*"
+require "../src/graphql/schema"
+require "../src/graphql/*"
+
 require "../src/helpers/*"
 require "../src/controllers/application_controller"
 require "../src/controllers/**"
