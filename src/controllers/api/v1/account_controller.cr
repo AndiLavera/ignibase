@@ -3,6 +3,7 @@ require "jbuilder"
 
 class AccountController < ApplicationController
   include Validations
+
   # GET /account
   # Get currently logged in user data
   def index
@@ -16,7 +17,7 @@ class AccountController < ApplicationController
   # POST /account
   # Allow a new user to register a new account
   def create
-    account = User.new()
+    account = User.new
     if account.create_user_and_app_user!(resource_params)
       Kilt.render("src/json/account/create.jbuilder")
     else
