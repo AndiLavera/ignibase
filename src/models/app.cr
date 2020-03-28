@@ -1,11 +1,6 @@
 require "uuid"
 
 class App < ApplicationRecord
-  mapping(
-    name: { type: String? },
-    uuid: { type: String? },
-  )
-
   has_and_belongs_to_many :users, User
 
   validates_presence :name
