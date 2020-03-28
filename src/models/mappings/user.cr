@@ -2,7 +2,8 @@ class User < ApplicationRecord
   mapping(
     email: {type: String?, default: ""},
     password_digest: {type: String?},
-    full_name: {type: String?},
+    first_name: {type: String?},
+    last_name: {type: String?},
     old_password: {type: String?},
     preferences: {type: JSON::Any?} # Uncomment these for the Confirmable
   # confirmation_token: { type: String?, null: true },

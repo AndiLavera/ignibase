@@ -5,7 +5,6 @@ class CreateApp < Jennifer::Migration::Base
       t.string :uuid
       t.timestamp :created_at
       t.timestamp :updated_at
-      # t.reference :user
     end
   end
 

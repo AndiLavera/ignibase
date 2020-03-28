@@ -8,7 +8,8 @@ class User < ApplicationRecord
   has_and_belongs_to_many :apps, App
 
   def create_user_and_app_user(params : Amber::Validators::Params)
-    @full_name = params["full_name"] if params["full_name"]
+    @first_name = params["first_name"] if params["first_name"]
+    @last_name = params["last_name"] if params["last_name"]
     if params["email"]
       @email = params["email"]
     else
@@ -76,7 +77,8 @@ class User < ApplicationRecord
   #
   # Only sets attributes if the key exists
   private def update_information(params : Amber::Validators::Params)
-    self.full_name = params["full_name"] if params["full_name"]
+    self.first_name = params["first_name"] if params["first_name"]
+    self.last_name = params["last_name"] if params["last_name"]
     self.email = params["email"] if params["email"]
 
     if params["password"] && params["password_confirmation"]
