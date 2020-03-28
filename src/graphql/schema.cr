@@ -1,4 +1,10 @@
-# Available Types include:
+# `SCHEMA` represents the GraphQL schema
+#
+# This is where everything comes together for querying.
+#
+# More information can be found (here)[https://github.com/ziprandom/graphql-crystal]
+#
+# Available GraphQL types include:
 # String, Boolean, Int, Float, ID
 module Ignibase::Schema
   include QueryType
