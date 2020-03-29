@@ -29,7 +29,7 @@ require "graphql-crystal"
 require "../src/graphql/queries/*"
 require "../src/graphql/mutations/*"
 require "../src/graphql/schema"
-require "../src/graphql/*"
+require "../src/graphql/**"
 
 require "../src/helpers/*"
 require "../src/controllers/application_controller"
