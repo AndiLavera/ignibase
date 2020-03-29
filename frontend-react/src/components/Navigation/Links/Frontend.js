@@ -35,12 +35,12 @@ const Frontend = () => {
         }
         {currentUser() &&
           <>
-            <ListItem button key={"Dashboard"}>
+            <ListItem button component={Link} to={'/dashboard'} key={"Dashboard"}>
               <ListItemIcon><InboxIcon /></ListItemIcon>
               <ListItemText primary={"Dashboard"} />
             </ListItem>
 
-            <ListItem button key={"Sign Out"}>
+            <ListItem button component={Link} to={'/signout'} key={"Sign Out"}>
               <ListItemIcon><InboxIcon /></ListItemIcon>
               <ListItemText primary={"Sign Out"} />
             </ListItem>

@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import Routes from './components/Router/Routes'
 import Navigation from './components/Navigation/Navigation'
+import FlashMessage from './components/Flash/Message'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -16,6 +17,7 @@ const useStyles = makeStyles(theme => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
   },
+  appBarSpacer: theme.mixins.toolbar,
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
     marginLeft: drawerWidth,
@@ -92,6 +94,9 @@ export default function App() {
           [classes.contentShift]: open,
         })}
       >
+        <div className={classes.appBarSpacer} />
+
+        <FlashMessage />
         <Routes classes={classes} />
       </main>
     </div>

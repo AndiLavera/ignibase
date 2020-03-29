@@ -8,7 +8,6 @@ const Home = (props: any) => {
 
   return (
     <>
-      <div className={classes.drawerHeader} />
       <Typography paragraph>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
         ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum

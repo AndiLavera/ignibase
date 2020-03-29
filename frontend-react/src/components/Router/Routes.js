@@ -6,6 +6,8 @@ import About from '../pages/About';
 import Contact from '../pages/Contact';
 import SignUp from '../pages/SignUp';
 import SignIn from '../pages/SignIn';
+import SignOut from '../pages/SignOut'
+import Dashboard from '../Dashboard/Dashboard'
 
 const Routes = (props) => {
   const { classes } = props
@@ -28,9 +30,20 @@ const Routes = (props) => {
         exact path='/signup'
         render={(props) => <SignUp {...props} />}
       />
+
       <Route
         exact path='/signin'
         render={(props) => <SignIn {...props} />}
+      />
+
+      <Route
+        exact path='/signout'
+        render={(props) => <SignOut {...props} />}
+      />
+
+      <Route
+        exact path='/dashboard'
+        render={(props) => <Dashboard {...props} />}
       />
     </Switch>
   )

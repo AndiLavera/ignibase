@@ -78,7 +78,7 @@ const SignIn = () => {
 
       const cookies = new Cookies();
       cookies.set(
-        'session',
+        'ignibase.session',
         { 
           token: msg["user"]["token"],
           id: msg["user"]["id"]
