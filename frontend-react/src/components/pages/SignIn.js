@@ -61,12 +61,12 @@ const SignIn = () => {
   })
 
   const handleResponse = (status, msg) => {
+    const cookies = new Cookies();
     if (status === 201) {
       setStatus({
         submitted: true,
         submitting: false,
-        error: false,
-        message: JSON.stringify(msg)
+        error: false
       })
       setInputs({
         email: '',
@@ -76,7 +76,6 @@ const SignIn = () => {
         termsOfService: false
       })
 
-      const cookies = new Cookies();
       cookies.set(
         'ignibase.session',
         { 
@@ -85,13 +84,16 @@ const SignIn = () => {
         },
         { path: '/' }
       )
+
+      cookies.set('ignibase.flash', {success: 'Successfully sign in'})
     } else {
       setStatus({
         submitted: false,
         submitting: false,
-        error: true,
-        message: JSON.stringify(msg)
+        error: false
       })
+
+      cookies.set('ignibase.flash', {error: 'Invalid credentials. Please try again.'})
     }
   }
 

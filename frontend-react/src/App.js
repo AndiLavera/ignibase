@@ -1,11 +1,13 @@
 import React from 'react';
 
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
+import Pink from '@material-ui/core/colors/pink';
 
 import Routes from './components/Router/Routes'
 import Navigation from './components/Navigation/Navigation'
 import FlashMessage from './components/Flash/Message'
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -16,6 +18,8 @@ const useStyles = makeStyles(theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    background: '#fff',
+    color: 'rgba(0, 0, 0, 0.54)'
   },
   appBarSpacer: theme.mixins.toolbar,
   appBarShift: {
@@ -38,6 +42,8 @@ const useStyles = makeStyles(theme => ({
   },
   drawerPaper: {
     width: drawerWidth,
+    color: 'rgba(0, 0, 0, 0.54)'
+    //background: '#16293a'
   },
   drawerHeader: {
     display: 'flex',
