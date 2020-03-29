@@ -136,7 +136,7 @@ const SignIn = () => {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign up
+          Sign in
         </Typography>
         <form className={classes.form} onSubmit={handleOnSubmit}>
           <Grid container spacing={2}>
@@ -188,14 +188,6 @@ const SignIn = () => {
           {!status.error && status.message && (
             <div className="success">{status.message}</div>
           )}
-
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Link href="#" variant="body2">
-                Already have an account? Sign in
-              </Link>
-            </Grid>
-          </Grid>
         </form>
       </div>
       <Box mt={5}>

@@ -7,9 +7,9 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
-import Chart from './Chart';
-import Deposits from './Deposits';
-import Orders from './Orders';
+import Chart from '../Dashboard/Chart';
+import Deposits from '../Dashboard/Deposits';
+import Orders from '../Dashboard/Orders';
 
 function Copyright() {
   return (

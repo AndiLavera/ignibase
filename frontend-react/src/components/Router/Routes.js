@@ -7,7 +7,7 @@ import Contact from '../pages/Contact';
 import SignUp from '../pages/SignUp';
 import SignIn from '../pages/SignIn';
 import SignOut from '../pages/SignOut'
-import Dashboard from '../Dashboard/Dashboard'
+import Dashboard from '../pages/Dashboard'
 
 const Routes = (props) => {
   const { classes } = props
