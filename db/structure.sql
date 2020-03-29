@@ -21,6 +21,44 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
+-- Name: api_keys; Type: TABLE; Schema: public; Owner: cannvi
+--
+
+CREATE TABLE public.api_keys (
+    id integer NOT NULL,
+    app_id integer,
+    key character varying(254),
+    environment character varying(254),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE public.api_keys OWNER TO cannvi;
+
+--
+-- Name: api_keys_id_seq; Type: SEQUENCE; Schema: public; Owner: cannvi
+--
+
+CREATE SEQUENCE public.api_keys_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.api_keys_id_seq OWNER TO cannvi;
+
+--
+-- Name: api_keys_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: cannvi
+--
+
+ALTER SEQUENCE public.api_keys_id_seq OWNED BY public.api_keys.id;
+
+
+--
 -- Name: apps; Type: TABLE; Schema: public; Owner: cannvi
 --
 
@@ -168,6 +206,13 @@ ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 
 --
+-- Name: api_keys id; Type: DEFAULT; Schema: public; Owner: cannvi
+--
+
+ALTER TABLE ONLY public.api_keys ALTER COLUMN id SET DEFAULT nextval('public.api_keys_id_seq'::regclass);
+
+
+--
 -- Name: apps id; Type: DEFAULT; Schema: public; Owner: cannvi
 --
 
@@ -193,6 +238,14 @@ ALTER TABLE ONLY public.migration_versions ALTER COLUMN id SET DEFAULT nextval('
 --
 
 ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- Name: api_keys api_keys_pkey; Type: CONSTRAINT; Schema: public; Owner: cannvi
+--
+
+ALTER TABLE ONLY public.api_keys
+    ADD CONSTRAINT api_keys_pkey PRIMARY KEY (id);
 
 
 --
@@ -225,6 +278,14 @@ ALTER TABLE ONLY public.migration_versions
 
 ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: api_keys fk_cr_215e9fe564; Type: FK CONSTRAINT; Schema: public; Owner: cannvi
+--
+
+ALTER TABLE ONLY public.api_keys
+    ADD CONSTRAINT fk_cr_215e9fe564 FOREIGN KEY (app_id) REFERENCES public.apps(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
 
 
 --
