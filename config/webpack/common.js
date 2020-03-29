@@ -9,15 +9,7 @@ let config = {
   output: {
     filename: '[name]',
     path: path.resolve(__dirname, '../../public/dist'),
-    publicPath: '/dist'
-  },
-  devServer: {
-    contentBase: path.join(__dirname, '../../public/dist'),
-    compress: true,
-    port: 9090,
-    after: function(app, server, compiler) {
-      console.log('Webpack Reloaded')
-    }
+    publicPath: '/public/dist/'
   },
   resolve: {
     alias: {

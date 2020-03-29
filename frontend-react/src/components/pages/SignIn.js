@@ -61,12 +61,12 @@ const SignIn = () => {
   })
 
   const handleResponse = (status, msg) => {
+    const cookies = new Cookies();
     if (status === 201) {
       setStatus({
         submitted: true,
         submitting: false,
-        error: false,
-        message: JSON.stringify(msg)
+        error: false
       })
       setInputs({
         email: '',
@@ -76,22 +76,24 @@ const SignIn = () => {
         termsOfService: false
       })
 
-      const cookies = new Cookies();
       cookies.set(
-        'session',
+        'ignibase.session',
         { 
           token: msg["user"]["token"],
           id: msg["user"]["id"]
         },
         { path: '/' }
       )
+
+      cookies.set('ignibase.flash', {success: 'Successfully sign in'})
     } else {
       setStatus({
         submitted: false,
         submitting: false,
-        error: true,
-        message: JSON.stringify(msg)
+        error: false
       })
+
+      cookies.set('ignibase.flash', {error: 'Invalid credentials. Please try again.'})
     }
   }
 
@@ -134,7 +136,7 @@ const SignIn = () => {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign up
+          Sign in
         </Typography>
         <form className={classes.form} onSubmit={handleOnSubmit}>
           <Grid container spacing={2}>
@@ -186,14 +188,6 @@ const SignIn = () => {
           {!status.error && status.message && (
             <div className="success">{status.message}</div>
           )}
-
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Link href="#" variant="body2">
-                Already have an account? Sign in
-              </Link>
-            </Grid>
-          </Grid>
         </form>
       </div>
       <Box mt={5}>
