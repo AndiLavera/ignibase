@@ -65,7 +65,7 @@ ALTER SEQUENCE public.api_keys_id_seq OWNED BY public.api_keys.id;
 CREATE TABLE public.apps (
     id integer NOT NULL,
     name character varying(254),
-    uuid character varying(254),
+    uuid character varying(254) NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -101,8 +101,10 @@ ALTER SEQUENCE public.apps_id_seq OWNED BY public.apps.id;
 
 CREATE TABLE public.apps_users (
     id integer NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
     user_id integer,
-    app_id integer
+    app_id character varying(254)
 );
 
 
@@ -281,6 +283,13 @@ ALTER TABLE ONLY public.users
 
 
 --
+-- Name: apps_uuid_idx; Type: INDEX; Schema: public; Owner: cannvi
+--
+
+CREATE UNIQUE INDEX apps_uuid_idx ON public.apps USING btree (uuid);
+
+
+--
 -- Name: api_keys fk_cr_215e9fe564; Type: FK CONSTRAINT; Schema: public; Owner: cannvi
 --
 
@@ -293,7 +302,7 @@ ALTER TABLE ONLY public.api_keys
 --
 
 ALTER TABLE ONLY public.apps_users
-    ADD CONSTRAINT fk_cr_606d320c60 FOREIGN KEY (app_id) REFERENCES public.apps(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+    ADD CONSTRAINT fk_cr_606d320c60 FOREIGN KEY (app_id) REFERENCES public.apps(uuid) ON UPDATE RESTRICT ON DELETE RESTRICT;
 
 
 --

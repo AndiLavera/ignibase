@@ -1,7 +1,7 @@
 require "kilt/jbuilder"
 require "jbuilder"
 
-class AccountController < ApplicationController
+class API::V1::AccountController < ApplicationController
   include Validations
 
   # GET /account
@@ -11,7 +11,7 @@ class AccountController < ApplicationController
     return invalid_credentials unless account
     return invalid_credentials unless account.authenticate(resource_params["password"])
 
-    Kilt.render("src/json/account/index.jbuilder")
+    Kilt.render("src/json/api/v1/account/index.jbuilder")
   end
 
   # POST /account
@@ -19,9 +19,9 @@ class AccountController < ApplicationController
   def create
     account = User.new
     if account.create_user_and_app_user!(resource_params)
-      Kilt.render("src/json/account/create.jbuilder")
+      Kilt.render("src/json/api/v1/account/create.jbuilder")
     else
-      Kilt.render("src/json/account/errors/create.jbuilder")
+      Kilt.render("src/json/api/v1/account/errors/create.jbuilder")
     end
   end
 
@@ -33,9 +33,9 @@ class AccountController < ApplicationController
     return invalid_password unless account.authenticate(resource_params["password"])
 
     if account.update_information!(resource_params)
-      Kilt.render("src/json/account/update.jbuilder")
+      Kilt.render("src/json/api/v1/account/update.jbuilder")
     else
-      Kilt.render("src/json/account/errors/update.jbuilder")
+      Kilt.render("src/json/api/v1/account/errors/update.jbuilder")
     end
   end
 

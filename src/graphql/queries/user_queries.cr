@@ -6,19 +6,19 @@
 #
 # ```crystal
 # {
-#       "data" => {
-#                   "users" => [
-#                                {
-#                                  "email" => "email@gmail.com",
-#                                   "first_name" => "my_first_name"
-#                                },
-#                                {
-#                                  "email" => "email2@gmail.com",
-#                                   "first_name" => "my_first_name2"
-#                                }
-#                              ]
-#                 }
-#     }
+#   "data" => {
+#     "users" => [
+#       {
+#         "email"      => "email@gmail.com",
+#         "first_name" => "my_first_name",
+#       },
+#       {
+#         "email"      => "email2@gmail.com",
+#         "first_name" => "my_first_name2",
+#       },
+#     ],
+#   },
+# }
 # ```
 #
 # `schema.execute("{ user(email: "email@gmail.com") { email first_name } }")`
@@ -26,11 +26,11 @@
 # ```crystal
 # {
 #   "data" => {
-#               "users" => {
-#                            "email" => "email@gmail.com",
-#                            "first_name" => "my_first_name"
-#                          }
-#             }
+#     "users" => {
+#       "email"      => "email@gmail.com",
+#       "first_name" => "my_first_name",
+#     },
+#   },
 # }
 # ```
 

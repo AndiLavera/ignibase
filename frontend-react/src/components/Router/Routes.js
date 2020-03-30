@@ -8,6 +8,7 @@ import SignUp from '../pages/SignUp';
 import SignIn from '../pages/SignIn';
 import SignOut from '../pages/SignOut'
 import Dashboard from '../pages/Dashboard'
+import Apps from '../pages/Apps'
 
 const Routes = (props) => {
   const { classes } = props
@@ -36,6 +37,8 @@ const Routes = (props) => {
         render={(props) => <SignIn {...props} />}
       />
 
+
+      {/* Requires auth */}
       <Route
         exact path='/signout'
         render={(props) => <SignOut {...props} />}
@@ -44,6 +47,11 @@ const Routes = (props) => {
       <Route
         exact path='/dashboard'
         render={(props) => <Dashboard {...props} />}
+      />
+
+      <Route
+        exact path='/apps'
+        render={(props) => <Apps {...props} />}
       />
     </Switch>
   )

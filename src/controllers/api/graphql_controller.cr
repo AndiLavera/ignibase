@@ -1,4 +1,5 @@
-class GraphQLController < ApplicationController
+# GraphQL API's are not to be versioned
+class API::GraphQLController < ApplicationController
   include Ignibase::Schema
 
   def index

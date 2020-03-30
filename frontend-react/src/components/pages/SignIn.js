@@ -114,7 +114,7 @@ const SignIn = () => {
   const handleOnSubmit = async e => {
     e.preventDefault()
     setStatus(prevStatus => ({ ...prevStatus, submitting: true }))
-    const res = await fetch('http://localhost:9090/api/v1/session', {
+    const res = await fetch('http://localhost:9090/api/session', {
       method: 'POST',
       headers: {
         'origin': 'localhost',

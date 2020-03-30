@@ -10,6 +10,7 @@ class AuthenticateJWT < Amber::Pipe::Base
       # ameba:disable Lint/UselessAssign
       payload, _header = JWT.decode(context.params["token"], Amber.settings.secret_key_base, JWT::Algorithm::HS256)
       # ameba:enable Lint/UselessAssign
+
       user = User.where { _email == payload["email"] }.first unless payload["email"]?.nil?
     end
 
