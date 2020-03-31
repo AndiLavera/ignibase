@@ -5,7 +5,7 @@ class User < ApplicationRecord
     # :omniauthable, :recoverable, :lockable, :invitable
   )
 
-  has_and_belongs_to_many :apps, App
+  has_and_belongs_to_many :apps, App, primary: :id, foreign: :user_id, association_primary: :uuid
 
   def create_user_and_app_user(params : Amber::Validators::Params)
     @first_name = params["first_name"] if params["first_name"]
@@ -24,7 +24,7 @@ class User < ApplicationRecord
     User.transaction do
       self.save
       app_user = AppsUsers.new
-      app_user.app_id = params["app_id"].to_i32
+      app_user.app_id = params["app_id"]
       app_user.user_id = self.id
       app_user.save
       app_user

@@ -6,7 +6,7 @@ class User < ApplicationRecord
     last_name: {type: String?},
     old_password: {type: String?},
     preferences: {type: JSON::Any?},
-    # Uncomment these for the Confirmable
+      # Uncomment these for the Confirmable
     # confirmation_token: { type: String?, null: true },
     # confirmed: { type: Bool, null: true },
     # confirmed_at: { type: Time, null: true },
@@ -39,5 +39,5 @@ class User < ApplicationRecord
     # invitation_token: { type: String? },
     # invited_by: { type: Int64? },
     # invitation_sent_at: { type: Time? },
-  )
+)
 end

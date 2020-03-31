@@ -40,6 +40,11 @@ const Frontend = () => {
               <ListItemText primary={"Dashboard"} />
             </ListItem>
 
+            <ListItem button component={Link} to={'/apps'} key={"Apps"}>
+              <ListItemIcon><InboxIcon /></ListItemIcon>
+              <ListItemText primary={"Apps"} />
+            </ListItem>
+
             <ListItem button component={Link} to={'/signout'} key={"Sign Out"}>
               <ListItemIcon><InboxIcon /></ListItemIcon>
               <ListItemText primary={"Sign Out"} />

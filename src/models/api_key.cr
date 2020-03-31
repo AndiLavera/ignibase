@@ -10,6 +10,6 @@ class APIKey < ApplicationRecord
   before_validation :generate_uuid
 
   private def generate_uuid
-    self.uuid = UUID.new(UUID.random).hexstring
+    self.key = UUID.new(UUID.random).hexstring
   end
 end
