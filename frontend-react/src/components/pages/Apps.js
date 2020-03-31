@@ -18,27 +18,9 @@ const useStyles = makeStyles({
   },
 });
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = () => {
-  const res = fetch('http://localhost:9090/api/apps', {
-    method: 'POST',
-    headers: {
-      'origin': 'localhost',
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({token: getToken()})
-  })
-  return [
-          createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-          createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-          createData('Eclair', 262, 16.0, 24, 6.0),
-          createData('Cupcake', 305, 3.7, 67, 4.3),
-          createData('Gingerbread', 356, 16.0, 49, 3.9),
-  ]
+const componentDidMount = () => {
+  // fetch data and update state
+  
 }
 
 const Apps = () => {
@@ -46,11 +28,38 @@ const Apps = () => {
 
   const [open, setOpen] = React.useState(false);
 
+  const fetchData = async () => {
+    const res = await fetch('http://localhost:9090/api/apps', {
+      method: 'POST',
+      headers: {
+        'origin': 'localhost',
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({token: getToken()})
+    })
+  
+    return await res.json()
+  }
+  
+  const [state, setState] = useState({
+    data: [],
+    requested: false
+  })
+
+  const rows = () => {
+    if (state.requested === false) {
+      fetchData().then(response => setState({ data: response.apps, requested: true })).catch()
+    }
+    return state.data
+  }
+
   const handleOpen = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
+    setState(prev => ({ ...prev, requested: false }))
     setOpen(false);
   };
 
@@ -64,16 +73,19 @@ const Apps = () => {
           <TableHead>
             <TableRow>
               <TableCell>App Name</TableCell>
+              <TableCell align="right">ID</TableCell>
               <TableCell align="right">Date Created</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {rows().map((row) => (
-              <TableRow key={row.name}>
+              //console.log(row)
+              <TableRow key={row.id}>
                 <TableCell component="th" scope="row">
                   {row.name}
                 </TableCell>
-                <TableCell align="right">{row.calories}</TableCell>
+                <TableCell align="right">{row.id}</TableCell>
+                <TableCell align="right">{row.created_at}</TableCell>
               </TableRow>
             ))}
           </TableBody>

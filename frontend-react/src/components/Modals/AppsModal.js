@@ -47,7 +47,7 @@ function AppsModal({ open, setOpen, handleClose }) {
   })
 
   const handleResponse = (status, msg) => {
-    if (status === 200) {
+    if (status === 201) {
       setStatus({
         submitted: true,
         submitting: false,

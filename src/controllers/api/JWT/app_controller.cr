@@ -3,11 +3,12 @@ class API::JWT::AppController < ApplicationController
 
   def index
     user = find_user_from_jwt(resource_params["token"])
-    
+
     if user && user.apps
       # Used in jbuilder
       # ameba:disable Lint/UselessAssign
       apps = user.apps
+      pp apps
       # ameba:enable Lint/UselessAssign
       Kilt.render("src/json/api/app/index.jbuilder")
     else
