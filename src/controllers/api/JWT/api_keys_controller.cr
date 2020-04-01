@@ -6,7 +6,6 @@
 # Updating is best done by deleting the current key
 # and creating a new one. This is for security purposes.
 class API::JWT::APIKeysController < ApplicationController
-
   # Fetches all api keys owned by a particular application
   # post "/api/api_key", API::JWT::APIKeysController, :index
   def index
@@ -32,7 +31,7 @@ class API::JWT::APIKeysController < ApplicationController
     if environment && app && app.valid_user?(current_user)
       # Used in the jbuilder
       # ameba:disable Lint/UselessAssign
-      key = APIKey.create({ app_id: app.id, environment: environment })
+      key = APIKey.create({app_id: app.id, environment: environment})
       # ameba:enable Lint/UselessAssign
       Kilt.render("src/json/api/keys/create.jbuilder")
     else

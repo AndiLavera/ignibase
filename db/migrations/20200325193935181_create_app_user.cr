@@ -4,7 +4,7 @@ class CreateAppUser < Jennifer::Migration::Base
       t.timestamp :created_at
       t.timestamp :updated_at
       t.reference :user
-      #t.reference :app
+      # t.reference :app
       t.string :app_id
     end
 

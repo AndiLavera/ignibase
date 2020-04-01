@@ -9,7 +9,7 @@ class API::SessionController < ApplicationController
     if user && user.authenticate(resource_params.validate!["password"])
       # `token` is used in `src/json/api/session/create.jbuilder`
       # ameba:disable Lint/UselessAssign
-      token = ::JWT.encode({ :email => user.email }, Amber.settings.secret_key_base, ::JWT::Algorithm::HS256)
+      token = ::JWT.encode({:email => user.email}, Amber.settings.secret_key_base, ::JWT::Algorithm::HS256)
       # ameba:enable Lint/UselessAssign
       Kilt.render("src/json/api/session/create.jbuilder")
     else

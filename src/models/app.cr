@@ -1,7 +1,8 @@
 require "uuid"
 
 class App < ApplicationRecord
-  has_and_belongs_to_many :users, User
+  belongs_to :owner, User, primary: :id, foreign: :user_id
+  has_and_belongs_to_many :accounts, User
   has_many :apps_users, AppsUsers, primary: :uuid, foreign: :app_id
   has_many :keys, APIKey
 
@@ -10,14 +11,10 @@ class App < ApplicationRecord
 
   before_validation :generate_uuid
 
-  def valid_user?(user : User | Nil)
-    return false if user.nil?
+  def valid_user?(current_user : User | Nil)
+    return false if current_user.nil?
 
-    !!(AppsUsers
-      .where {
-        _app_id == self.uuid &&
-        _user_id == user.id
-      }.first)
+    self.user_id == current_user.id
   end
 
   private def generate_uuid

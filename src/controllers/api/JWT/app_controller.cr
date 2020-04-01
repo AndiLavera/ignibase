@@ -8,7 +8,6 @@ class API::JWT::AppController < ApplicationController
       # Used in jbuilder
       # ameba:disable Lint/UselessAssign
       apps = user.apps
-      pp apps
       # ameba:enable Lint/UselessAssign
       Kilt.render("src/json/api/app/index.jbuilder")
     else
@@ -19,14 +18,14 @@ class API::JWT::AppController < ApplicationController
   end
 
   def create
-    user = find_user_from_jwt(resource_params["token"])
-    name = resource_params.validate!["name"]
-    return unless name
-    app = App.new({ name: name })
-
-    if app.save
-      if user && app.uuid
-        AppsUsers.create({ user_id: user.id, app_id: app.uuid })
+    user = current_user
+    if user
+      app = App.new({name: resource_params["name"], user_id: user.id})
+      if app.save
+        if user && app.uuid
+          AppsUsers.create({user_id: user.id, app_id: app.uuid})
+        end
+      else
       end
     else
     end
@@ -39,7 +38,7 @@ class API::JWT::AppController < ApplicationController
     params.validation do
       required :token
       optional :name
-      #optional :environment
+      # optional :environment
     end
   end
 end
