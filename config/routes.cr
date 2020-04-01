@@ -35,7 +35,7 @@ Amber::Server.configure do
   # This pipeline is for the front facing api.
   # User requests are verified via api keys.
   pipeline :api_with_key do
-    # plug AuthenticateAPIKey.new
+    plug AuthenticateAPIKey.new
   end
 
   # All static content will run these transformations
@@ -50,6 +50,7 @@ Amber::Server.configure do
     get "/", ApplicationController, :root
     get "/dashboard/*", ApplicationController, :root
     get "/signup", ApplicationController, :root
+    get "/signin", ApplicationController, :root
   end
 
   routes :public_api, "/api" do
@@ -78,7 +79,7 @@ Amber::Server.configure do
   #
   # These are all the endpoints of the service
   routes :api_with_key, "/api/v1" do
-    get "/account", API::V1::AccountController, :index
+    get "/account", API::V1::AccountController, :show
     post "/account", API::V1::AccountController, :create
   end
 

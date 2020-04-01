@@ -6,7 +6,7 @@ class API::V1::AccountController < ApplicationController
 
   # GET /account
   # Get currently logged in user data
-  def index
+  def show
     account = User.where { _email == resource_params["email"] }.first
     return invalid_credentials unless account
     return invalid_credentials unless account.authenticate(resource_params["password"])

@@ -4,7 +4,8 @@ end
 
 class AuthenticateAPIKey < Amber::Pipe::Base
   def call(context)
-    if context.params["api_key"]?
+    key = context.request.headers["X-Auth-Token"]
+    if key
       user = User.where { _api_key == context.params["api_key"] }.first unless context.params["api_key"]?.nil?
     end
 
