@@ -7,45 +7,31 @@
 # and creating a new one. This is for security purposes.
 class API::JWT::APIKeysController < ApplicationController
   # Fetches all api keys owned by a particular application
+  # post "/api/api_key", API::JWT::APIKeysController, :index
   def index
-    user = User.where { _email == resource_params.validate!["email"] }.first
+    app = App.where { _uuid == resource_params.validate!["app_id"] }.first
 
-    if user
-      apps_users = AppsUsers
-              .where {
-                _app_id == resource_params.validate!["app_id"] &&
-                _user_id == user.id
-              }
-              .first
-
-      app = apps_users.app if apps_users
+    if app && app.valid_user?(current_user)
       # Used in the jbuilder
       # ameba:disable Lint/UselessAssign
-      (apps_users ? (keys = app.keys) : nil) if app
+      keys = app.keys
       # ameba:enable Lint/UselessAssign
-      Kilt.render("src/json/api/keys/show.jbuilder")
+      Kilt.render("src/json/api/keys/index.jbuilder")
     else
-      Kilt.render("src/json/api/keys/errors/show.jbuilder")
+      Kilt.render("src/json/api/keys/errors/index.jbuilder")
     end
   end
 
   # Creates new api keys
+  # post "/api/api_key/create", API::JWT::APIKeysController, :create
   def create
-    user = User.where { _email == resource_params.validate!["email"] }.first
     environment = resource_params.validate!["environment"]
+    app = App.where { _uuid == resource_params.validate!["app_id"] }.first
 
-    if user && environment
-      apps_users = AppsUsers
-                    .where {
-                      _app_id == resource_params.validate!["app_id"] &&
-                      _user_id == user.id
-                    }
-                    .first
-
-      apps_users ? (app = apps_users.app) : nil
+    if environment && app && app.valid_user?(current_user)
       # Used in the jbuilder
       # ameba:disable Lint/UselessAssign
-      key = APIKey.create({app_id: app.id, environment: environment}) if app
+      key = APIKey.create({app_id: app.id, environment: environment})
       # ameba:enable Lint/UselessAssign
       Kilt.render("src/json/api/keys/create.jbuilder")
     else
@@ -59,8 +45,8 @@ class API::JWT::APIKeysController < ApplicationController
 
   def resource_params
     params.validation do
-      required :email
       required :app_id
+      optional :email
       optional :environment
     end
   end

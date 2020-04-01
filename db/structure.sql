@@ -67,7 +67,8 @@ CREATE TABLE public.apps (
     name character varying(254),
     uuid character varying(254) NOT NULL,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    user_id integer
 );
 
 
@@ -311,6 +312,14 @@ ALTER TABLE ONLY public.apps_users
 
 ALTER TABLE ONLY public.apps_users
     ADD CONSTRAINT fk_cr_8491421a8f FOREIGN KEY (user_id) REFERENCES public.users(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: apps fk_cr_995ae3be76; Type: FK CONSTRAINT; Schema: public; Owner: cannvi
+--
+
+ALTER TABLE ONLY public.apps
+    ADD CONSTRAINT fk_cr_995ae3be76 FOREIGN KEY (user_id) REFERENCES public.users(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
 
 
 --
