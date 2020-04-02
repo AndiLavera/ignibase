@@ -44,9 +44,9 @@ function SidebarItem({ depthStep = 10, depth = 0, expanded, item, ...rest }) {
     <>
       <ListItem
         className="sidebar-item"
-        component={Link}
+        component={to ? Link : undefined}
         onClick={onClick}
-        to={to}
+        to={to ? to : undefined}
         button
         dense
         {...rest}
