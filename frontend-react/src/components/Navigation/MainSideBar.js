@@ -5,7 +5,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import IconButton from '@material-ui/core/IconButton';
 
-import Frontend from './Links/Frontend'
+import SideBarLinks from './SideBarItems/SideBarItems'
 
 const MainNavBar = (props) => {
   const { classes, theme, handleDrawerClose, open } = props
@@ -26,7 +26,7 @@ const MainNavBar = (props) => {
         </IconButton>
       </div>
       
-      <Frontend />
+      <SideBarLinks />
 
     </Drawer>
   )

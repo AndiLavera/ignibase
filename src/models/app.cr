@@ -2,7 +2,7 @@ require "uuid"
 
 class App < ApplicationRecord
   belongs_to :owner, User, primary: :id, foreign: :user_id
-  has_and_belongs_to_many :accounts, :user_id
+  has_and_belongs_to_many :accounts, User, primary: :user_id
   has_many :keys, APIKey
 
   validates_presence :name
