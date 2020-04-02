@@ -4,7 +4,7 @@ import Divider from '@material-ui/core/Divider';
 
 import SidebarItem from './SideBarItem';
 
-const SideBarItemGenerator = ({ items, depthStep, depth, expanded }) => {
+const ItemGenerator = ({ items, depthStep, depth, expanded }) => {
   return(
     <div className="sidebar">
       <List>
@@ -27,4 +27,4 @@ const SideBarItemGenerator = ({ items, depthStep, depth, expanded }) => {
   )
 }
 
-export default SideBarItemGenerator
+export default ItemGenerator
