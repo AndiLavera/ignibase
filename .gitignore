@@ -8,6 +8,6 @@
 .encryption_key
 production.yml
 .DS_Store
-/bin/
+/bin/ignibase
 /node_modules
 /config/database.yml

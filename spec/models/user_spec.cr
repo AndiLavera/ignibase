@@ -1,8 +1,8 @@
 require "./spec_helper"
-require "../../src/models/user.cr"
+require "../../src/models/user"
 
 describe User do
-  Spec.before_each do
-    User.clear
+  it "the truth" do
+    true.should eq(true)
   end
 end
