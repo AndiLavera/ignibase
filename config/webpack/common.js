@@ -1,21 +1,21 @@
-const webpack = require('webpack');
-const path = require('path');
+require('webpack')
+const path = require('path')
 
-let config = {
+const config = {
   entry: {
     'main.bundle.js': './frontend-react/index.js',
-    'main.bundle.css': './frontend-react/index.css'
+    'main.bundle.css': './frontend-react/index.css',
   },
   output: {
     filename: '[name]',
     path: path.resolve(__dirname, '../../public/dist'),
-    publicPath: '/dist'
+    publicPath: '/dist',
   },
   resolve: {
     alias: {
-      amber: path.resolve(__dirname, '../../lib/amber/assets/js/amber.js')
+      amber: path.resolve(__dirname, '../../lib/amber/assets/js/amber.js'),
     },
-    extensions: [ '.tsx', '.ts', '.js' ]
+    extensions: ['.tsx', '.ts', '.js', '.jsx'],
   },
   module: {
     rules: [
@@ -25,9 +25,9 @@ let config = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env']
-          }
-        }
+            presets: ['@babel/preset-env'],
+          },
+        },
       },
       {
         test: /\.tsx?$/,
@@ -39,19 +39,19 @@ let config = {
         exclude: /node_modules/,
         use: [
           'style-loader',
-          'css-loader'
-        ]
+          'css-loader',
+        ],
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf|png|svg|jpg|gif)$/,
         exclude: /node_modules/,
         use: [
-          'file-loader?name=/[name].[ext]'
-        ]
-      }
-    ]
+          'file-loader?name=/[name].[ext]',
+        ],
+      },
+    ],
   },
-  stats: 'errors-only'
-};
+  stats: 'errors-only',
+}
 
-module.exports = config;
+module.exports = config
