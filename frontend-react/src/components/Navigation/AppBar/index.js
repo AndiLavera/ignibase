@@ -27,7 +27,7 @@ const AppBar = (props) => {
           <MenuIcon />
         </IconButton>
         <Typography variant="h6" noWrap>
-          Persistent drawer
+          My Drawer
         </Typography>
       </Toolbar>
     </MaterialAppBar>

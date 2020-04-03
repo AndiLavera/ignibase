@@ -20,7 +20,13 @@ const AuthItems = () => {
 
     res.then(data => {
       data.apps.map((app) => {
-        apps.push({ name: app.name, label: app.name })
+        apps.push({
+          name: app.name,
+          label: app.name,
+          items: [
+            { name: 'apikeys', label: 'Api Keys', to: `/projects/${app.name}/api_keys`, Icon: InboxIcon }
+          ]
+        })
       })
     })
 

@@ -9,12 +9,13 @@ let config = {
   output: {
     filename: '[name]',
     path: path.resolve(__dirname, '../../public/dist'),
-    publicPath: '/public/dist/'
+    publicPath: '/dist'
   },
   resolve: {
     alias: {
       amber: path.resolve(__dirname, '../../lib/amber/assets/js/amber.js')
-    }
+    },
+    extensions: [ '.tsx', '.ts', '.js' ]
   },
   module: {
     rules: [
@@ -49,9 +50,6 @@ let config = {
         ]
       }
     ]
-  },
-  resolve: {
-    extensions: [ '.tsx', '.ts', '.js' ],
   },
   stats: 'errors-only'
 };
