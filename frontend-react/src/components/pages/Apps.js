@@ -18,11 +18,6 @@ const useStyles = makeStyles({
   },
 });
 
-const componentDidMount = () => {
-  // fetch data and update state
-  
-}
-
 const Apps = () => {
   const classes = useStyles();
 

@@ -5,7 +5,7 @@ import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
 import Pink from '@material-ui/core/colors/pink';
 
 import Routes from './components/Router/Routes'
-import Navigation from './components/Navigation/Navigation'
+import Navigation from './components/Navigation'
 import FlashMessage from './components/Flash/Message'
 
 

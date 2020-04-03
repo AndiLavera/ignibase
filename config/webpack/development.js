@@ -5,5 +5,8 @@ const common = require('./common.js');
 module.exports = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
-  watch: true
+  watchOptions: {
+    poll: true,
+    ignored: /node_modules/
+  }
 });

@@ -9,6 +9,7 @@ import SignIn from '../pages/SignIn';
 import SignOut from '../pages/SignOut'
 import Dashboard from '../pages/Dashboard'
 import Apps from '../pages/Apps'
+import ApiKeys from '../pages/projects/ApiKeys'
 
 const Routes = (props) => {
   const { classes } = props
@@ -52,6 +53,11 @@ const Routes = (props) => {
       <Route
         exact path='/apps'
         render={(props) => <Apps {...props} />}
+      />
+
+      <Route
+        path='/projects/:name/api_keys'
+        render={(props) => <ApiKeys {...props} />}
       />
     </Switch>
   )
