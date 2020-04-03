@@ -1,7 +1,0 @@
----
-name: recipe
-version: 0.1.0
-dependencies:
-  react-recipe:
-    github: progressive-amber/react-recipe
-    branch: master

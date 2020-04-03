@@ -1,5 +1,0 @@
-type: app
-database: {{ database }}
-language: {{ language }}
-model: {{ model }}
-recipe: {{ recipe }}
