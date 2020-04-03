@@ -1,31 +1,32 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from "react-router-dom";
-import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
+import { useParams } from 'react-router-dom'
+import { makeStyles } from '@material-ui/core/styles'
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableContainer from '@material-ui/core/TableContainer'
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
+import Paper from '@material-ui/core/Paper'
+import Button from '@material-ui/core/Button'
 
-import CreateApiKeys from '../../Modals/CreateApiKeys';
-import getToken from '../../Session/Session';
+import CreateApiKeys from '../../Modals/CreateApiKeys'
+import getToken from '../../Session/Session'
+
 const axios = require('axios').default.create({
   baseURL: 'http://localhost:9090/api/',
   timeout: 1000,
   headers: {
-    'Accept': 'application/json',
+    Accept: 'application/json',
     'Content-Type': 'application/json',
-  }
-});;
+  },
+})
 
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
   },
-});
+})
 
 const ApiKeys = () => {
   const params = useParams()
@@ -33,57 +34,54 @@ const ApiKeys = () => {
   const token = getToken()
   const [state, setState] = useState({
     keys: [],
-    id: ''
+    id: '',
   })
-  const [open, setOpen] = React.useState(false);
-  
+  const [open, setOpen] = React.useState(false)
+
   useEffect(() => {
     // Fetch apps on `componentDidMount`
     axios.post('/apps', {
-      token: token
+      token,
     })
-    .then(function (response) {
+      .then((res) => {
       // Then we iterate through the apps
-      response.data.apps.filter(app => {
+        res.data.apps.filter(((app) => {
         // Check if this iterations app name equals the param name
-        if (params.name === app.name){
+          if (params.name === app.name) {
           // With the correct id, we can now properly access this projects api keys
-          axios.post('/api_key', {
-            token: token,
-            app_id: app.id
-          })
-          .then(function (response) {
-            // Set the keys in state for iterating
-            // Set the id in state for the creation modal
-            setState({ keys: response.data.keys, id: app.id })
-          })
-          .catch(function (error) {
-            // Logs errors for '/api_key' request
-            console.log(error);
-          });
-        }
-      })
-    })
-    .catch(function (error) {
+            axios.post('/api_key', {
+              token,
+              app_id: app.id,
+            })
+              .then((response) => {
+                // Set the keys in state for iterating
+                // Set the id in state for the creation modal
+                setState({ keys: response.data.keys, id: app.id })
+              })
+              .catch((error) => {
+                // Logs errors for '/api_key' request
+                console.log(error)
+              })
+          }
+        }))
+      }).catch((error) => {
       // Logs errors for '/apps' request
-      console.log(error);
-    });
-  }, []);
+        console.log(error)
+      })
+  }, [])
 
-  const rows = () => {
-    return state.keys || []
-  }
+  const rows = () => state.keys || []
 
   const handleOpen = () => {
-    setOpen(true);
-  };
+    setOpen(true)
+  }
 
   const handleClose = () => {
-    setState(prev => ({
-      ...prev
+    setState((prev) => ({
+      ...prev,
     }))
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   return (
     <>
@@ -120,7 +118,7 @@ const ApiKeys = () => {
         axios={axios}
       />
     </>
-  );
+  )
 }
 
 export default ApiKeys

@@ -38,7 +38,6 @@ const Routes = (props) => {
         render={(props) => <SignIn {...props} />}
       />
 
-
       {/* Requires auth */}
       <Route
         exact path='/signout'
