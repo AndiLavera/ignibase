@@ -25,5 +25,17 @@ module.exports = {
   ],
   rules: {
     "semi": [2, "never"],
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".jsx"] }],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "mjs": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never",
+      }
+    ]
   },
 };

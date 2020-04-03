@@ -1,9 +1,9 @@
 import Cookies from 'universal-cookie'
 
 const getToken = () => {
-  const cookies = new Cookies();
+  const cookies = new Cookies()
   const jwt = cookies.get('ignibase.session')
-  if (jwt){
+  if (jwt) {
     return jwt.token
   }
 }
