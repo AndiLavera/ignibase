@@ -31,13 +31,10 @@ jobs:
     container:
       image: crystallang/crystal
     steps:
-      - uses: harmon758/postgresql-action@v1
-        with:
-          postgresql version: '11'
-      - uses: actions/checkout@v1
-      - name: Install PSQL
+      - name: Install Postgres
         run: |
-              sudo apt-get install -y postgresql-client
+              sudo apt install postgresql postgresql-contrib
+      - uses: actions/checkout@v1
       - name: Install Dependencies
         run: shards install
       - name: Create DB
