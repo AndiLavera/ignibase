@@ -7,6 +7,19 @@ class User < ApplicationRecord
 
   has_and_belongs_to_many :apps, App, primary: :id, foreign: :user_id, association_primary: :uuid
 
+  def self.new_top_level(params : Hash(String, String | Bool | Nil)) : User
+    user = User.new
+    user.email = params["email"] if params["email"]
+    if (password = params["password"])
+      user.password = password.to_s
+    end
+    user.first_name = params["firstName"]
+    user.last_name = params["lastName"]
+    # TODO: Add terms_of_service to user
+    # user.terms_of_service = params["termsOfService"]
+    user
+  end
+
   def create_user_and_app_user(params : Amber::Validators::Params)
     @first_name = params["first_name"] if params["first_name"]
     @last_name = params["last_name"] if params["last_name"]
