@@ -73,8 +73,8 @@ shards:
     version: 0.3.0
 
   jennifer:
-    github: imdrasil/jennifer.cr
-    version: 0.8.4
+    github: andrewc910/jennifer.cr
+    commit: 37b06906668fac83c27f362faf6ef2d3476b9603
 
   jwt:
     github: crystal-community/jwt
@@ -98,7 +98,7 @@ shards:
 
   mochi:
     github: gitlato/mochi
-    commit: 80cff43a49b3f8f7c16b8f9bbce149ea9fbf717d
+    commit: 855c544ad4ae804ccff9e4610b0ae46af684d1eb
 
   mysql:
     github: crystal-lang/crystal-mysql

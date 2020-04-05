@@ -26,7 +26,7 @@ class User < ApplicationRecord
 
     User.transaction do
       self.save
-      AppsUsers.create({ app_id: params["app_id"], user_id: self.id })
+      AppsUsers.create({app_id: params["app_id"], user_id: self.id})
     end
   end
 
