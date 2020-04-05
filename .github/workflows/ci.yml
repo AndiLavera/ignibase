@@ -30,17 +30,10 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: crystallang/crystal
-    services:
-      postgres:
-        image: postgres:11.6-alpine
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: 
-        ports:
-          - 5432:5432
-        # needed because the postgres container does not provide a healthcheck
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
+      - uses: harmon758/postgresql-action@v1
+        with:
+          postgresql version: '11'
       - uses: actions/checkout@v1
       - name: Install PSQL
         run: sudo apt-get install -y postgresql-client
