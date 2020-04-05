@@ -33,6 +33,7 @@ jobs:
     steps:
       - name: Install Postgres
         run: |
+              sudo apt update
               sudo apt install postgresql postgresql-contrib
       - uses: actions/checkout@v1
       - name: Install Dependencies
