@@ -43,6 +43,10 @@ jobs:
       - uses: actions/checkout@v1
       - name: Install Dependencies
         run: shards install
+      - name: Create DB
+        run: AMBER_ENV=test crystal sam.cr -- db:create
+      - name: Migrate DB
+        run: AMBER_ENV=test crystal sam.cr -- db:migrate  
       - name: Specs
         run: crystal spec --order random --error-on-warnings
   test_nightly:
