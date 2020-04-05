@@ -35,6 +35,9 @@ jobs:
         with:
           postgresql version: '11'
       - uses: actions/checkout@v1
+      - name: Install PSQL
+        run: |
+              sudo apt-get install -y postgresql-client
       - name: Install Dependencies
         run: shards install
       - name: Create DB
