@@ -33,8 +33,8 @@ jobs:
     steps:
       - name: Install Postgres
         run: |
-              apt update -y
-              apt install postgresql postgresql-contrib -y
+              apt-get -y update
+              apt-get -y install postgresql postgresql-contrib 
       - uses: actions/checkout@v1
       - name: Install Dependencies
         run: shards install
