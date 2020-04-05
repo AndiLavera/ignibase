@@ -34,7 +34,8 @@ jobs:
       - name: Install Postgres
         run: |
               apt-get -y update
-              apt-get -y install postgresql postgresql-contrib 
+              apt-get -y install postgresql postgresql-contrib
+              /usr/lib/postgresql/10/bin/pg_ctl -D /var/lib/postgresql/10/main -l logfile start
       - uses: actions/checkout@v1
       - name: Install Dependencies
         run: shards install
