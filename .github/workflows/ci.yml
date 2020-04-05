@@ -26,10 +26,11 @@ jobs:
         run: shards install
       - name: Ameba
         run: ./bin/ameba
+
   test_latest:
     runs-on: ubuntu-latest
-    container:
-      image: crystallang/crystal
+    # container:
+    #   image: crystallang/crystal
     services:
       postgres:
         image: postgres:10.8
@@ -42,6 +43,16 @@ jobs:
         # needed because the postgres container does not provide a healthcheck
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
+      - name: Install PostgreSQL 11
+        run: |
+          sudo apt update
+          sudo bash -c "echo deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main >> /etc/apt/sources.list.d/pgdg.list"
+          wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+          sudo apt-get update
+          sudo apt-get -yqq install libpq-dev postgresql-client-11
+      - name: Install Crystal
+        run: |
+          sudo snap install crystal --classic
       - uses: actions/checkout@v1
       - name: Install Dependencies
         run: shards install
