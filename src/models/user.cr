@@ -7,9 +7,23 @@ class User < ApplicationRecord
 
   has_and_belongs_to_many :apps, App, primary: :id, foreign: :user_id, association_primary: :uuid
 
+  def self.new_top_level(params : Hash(String, String | Bool | Nil)) : User
+    user = User.new
+    user.email = params["email"] if params["email"]
+    if (password = params["password"])
+      user.password = password.to_s
+    end
+    user.first_name = params["firstName"]
+    user.last_name = params["lastName"]
+    # TODO: Add terms_of_service to user
+    # user.terms_of_service = params["termsOfService"]
+    user
+  end
+
   def create_user_and_app_user(params : Amber::Validators::Params)
     @first_name = params["first_name"] if params["first_name"]
     @last_name = params["last_name"] if params["last_name"]
+    # TODO: validate_length of email to turn thise into a 1 liner
     if params["email"]
       @email = params["email"]
     else
@@ -18,16 +32,14 @@ class User < ApplicationRecord
     digest_password(params)
   end
 
+  # Creates a `User` & `AppsUser` & saves
+  # Used for users to create new users in their project.
   def create_user_and_app_user!(params : Amber::Validators::Params)
     create_user_and_app_user(params)
 
     User.transaction do
       self.save
-      app_user = AppsUsers.new
-      app_user.app_id = params["app_id"]
-      app_user.user_id = self.id
-      app_user.save
-      app_user
+      AppsUsers.create({app_id: params["app_id"], user_id: self.id})
     end
   end
 

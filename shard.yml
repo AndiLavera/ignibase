@@ -33,8 +33,8 @@ dependencies:
     version: 0.4.0
 
   jennifer:
-    github: imdrasil/jennifer.cr
-    version: 0.8.4
+    github: andrewc910/jennifer.cr
+    branch: association-primary
 
   mochi:
     github: gitlato/mochi
@@ -63,3 +63,7 @@ development_dependencies:
   garnet_spec:
     github: amberframework/garnet-spec
     version: ~> 0.2.1
+
+  ameba:
+    github: crystal-ameba/ameba
+    version: ~> 0.12.0
