@@ -53,7 +53,7 @@ jobs:
       - name: Install Crystal
         run: |
           sudo snap install crystal --classic
-          sudo apt install libssl-dev libxml2-dev libyaml-dev libgmp-dev libreadline-dev libz-dev
+          sudo apt -y install libssl-dev libxml2-dev libyaml-dev libgmp-dev libreadline-dev libz-dev libevent-dev gcc pkg-config tzdata libpcre3-dev
       - uses: actions/checkout@v1
       - name: Install Dependencies
         run: shards install
