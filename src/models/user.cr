@@ -10,6 +10,7 @@ class User < ApplicationRecord
   def create_user_and_app_user(params : Amber::Validators::Params)
     @first_name = params["first_name"] if params["first_name"]
     @last_name = params["last_name"] if params["last_name"]
+    # TODO: validate_length of email to turn thise into a 1 liner
     if params["email"]
       @email = params["email"]
     else
@@ -18,16 +19,14 @@ class User < ApplicationRecord
     digest_password(params)
   end
 
+  # Creates a `User` & `AppsUser` & saves
+  # Used for users to create new users in their project.
   def create_user_and_app_user!(params : Amber::Validators::Params)
     create_user_and_app_user(params)
 
     User.transaction do
       self.save
-      app_user = AppsUsers.new
-      app_user.app_id = params["app_id"]
-      app_user.user_id = self.id
-      app_user.save
-      app_user
+      AppsUsers.create({ app_id: params["app_id"], user_id: self.id })
     end
   end
 
