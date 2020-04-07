@@ -64,6 +64,9 @@ development_dependencies:
     github: amberframework/garnet-spec
     version: ~> 0.2.1
 
+  factory:
+    github: imdrasil/factory
+
   ameba:
     github: crystal-ameba/ameba
     version: ~> 0.12.0

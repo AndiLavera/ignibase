@@ -1,16 +1,17 @@
-require "./spec_helper"
-require "../../src/models/user"
+require "../spec_helper"
 
 describe User do
   it "should create a new top level user" do
-    email = "user_spec_01#{rand(1..100)}@gmail.com"
-    user = User.new_top_level({
-      "email"          => email,
-      "password"       => "Password123",
+    password = "Password123"
+    json = {
+      "email"          => "test@email.com",
+      "password"       => password,
       "firstName"      => "igni",
       "lastName"       => "base",
       "termsOfService" => true,
-    })
+    }.to_json
+    user = User.from_json(json)
+    user.password = password
 
     user.save.should eq(true)
     user.id.should_not be_nil

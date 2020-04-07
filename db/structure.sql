@@ -21,7 +21,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: api_keys; Type: TABLE; Schema: public; Owner: cannvi
+-- Name: api_keys; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.api_keys (
@@ -34,10 +34,10 @@ CREATE TABLE public.api_keys (
 );
 
 
-ALTER TABLE public.api_keys OWNER TO cannvi;
+ALTER TABLE public.api_keys OWNER TO postgres;
 
 --
--- Name: api_keys_id_seq; Type: SEQUENCE; Schema: public; Owner: cannvi
+-- Name: api_keys_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.api_keys_id_seq
@@ -49,17 +49,17 @@ CREATE SEQUENCE public.api_keys_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.api_keys_id_seq OWNER TO cannvi;
+ALTER TABLE public.api_keys_id_seq OWNER TO postgres;
 
 --
--- Name: api_keys_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: cannvi
+-- Name: api_keys_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.api_keys_id_seq OWNED BY public.api_keys.id;
 
 
 --
--- Name: apps; Type: TABLE; Schema: public; Owner: cannvi
+-- Name: apps; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.apps (
@@ -72,10 +72,10 @@ CREATE TABLE public.apps (
 );
 
 
-ALTER TABLE public.apps OWNER TO cannvi;
+ALTER TABLE public.apps OWNER TO postgres;
 
 --
--- Name: apps_id_seq; Type: SEQUENCE; Schema: public; Owner: cannvi
+-- Name: apps_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.apps_id_seq
@@ -87,17 +87,17 @@ CREATE SEQUENCE public.apps_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.apps_id_seq OWNER TO cannvi;
+ALTER TABLE public.apps_id_seq OWNER TO postgres;
 
 --
--- Name: apps_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: cannvi
+-- Name: apps_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.apps_id_seq OWNED BY public.apps.id;
 
 
 --
--- Name: apps_users; Type: TABLE; Schema: public; Owner: cannvi
+-- Name: apps_users; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.apps_users (
@@ -109,10 +109,10 @@ CREATE TABLE public.apps_users (
 );
 
 
-ALTER TABLE public.apps_users OWNER TO cannvi;
+ALTER TABLE public.apps_users OWNER TO postgres;
 
 --
--- Name: apps_users_id_seq; Type: SEQUENCE; Schema: public; Owner: cannvi
+-- Name: apps_users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.apps_users_id_seq
@@ -124,17 +124,17 @@ CREATE SEQUENCE public.apps_users_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.apps_users_id_seq OWNER TO cannvi;
+ALTER TABLE public.apps_users_id_seq OWNER TO postgres;
 
 --
--- Name: apps_users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: cannvi
+-- Name: apps_users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.apps_users_id_seq OWNED BY public.apps_users.id;
 
 
 --
--- Name: migration_versions; Type: TABLE; Schema: public; Owner: cannvi
+-- Name: migration_versions; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.migration_versions (
@@ -143,10 +143,10 @@ CREATE TABLE public.migration_versions (
 );
 
 
-ALTER TABLE public.migration_versions OWNER TO cannvi;
+ALTER TABLE public.migration_versions OWNER TO postgres;
 
 --
--- Name: migration_versions_id_seq; Type: SEQUENCE; Schema: public; Owner: cannvi
+-- Name: migration_versions_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.migration_versions_id_seq
@@ -158,17 +158,17 @@ CREATE SEQUENCE public.migration_versions_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.migration_versions_id_seq OWNER TO cannvi;
+ALTER TABLE public.migration_versions_id_seq OWNER TO postgres;
 
 --
--- Name: migration_versions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: cannvi
+-- Name: migration_versions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.migration_versions_id_seq OWNED BY public.migration_versions.id;
 
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: cannvi
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.users (
@@ -184,10 +184,10 @@ CREATE TABLE public.users (
 );
 
 
-ALTER TABLE public.users OWNER TO cannvi;
+ALTER TABLE public.users OWNER TO postgres;
 
 --
--- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: cannvi
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.users_id_seq
@@ -199,52 +199,52 @@ CREATE SEQUENCE public.users_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.users_id_seq OWNER TO cannvi;
+ALTER TABLE public.users_id_seq OWNER TO postgres;
 
 --
--- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: cannvi
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 
 --
--- Name: api_keys id; Type: DEFAULT; Schema: public; Owner: cannvi
+-- Name: api_keys id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.api_keys ALTER COLUMN id SET DEFAULT nextval('public.api_keys_id_seq'::regclass);
 
 
 --
--- Name: apps id; Type: DEFAULT; Schema: public; Owner: cannvi
+-- Name: apps id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.apps ALTER COLUMN id SET DEFAULT nextval('public.apps_id_seq'::regclass);
 
 
 --
--- Name: apps_users id; Type: DEFAULT; Schema: public; Owner: cannvi
+-- Name: apps_users id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.apps_users ALTER COLUMN id SET DEFAULT nextval('public.apps_users_id_seq'::regclass);
 
 
 --
--- Name: migration_versions id; Type: DEFAULT; Schema: public; Owner: cannvi
+-- Name: migration_versions id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.migration_versions ALTER COLUMN id SET DEFAULT nextval('public.migration_versions_id_seq'::regclass);
 
 
 --
--- Name: users id; Type: DEFAULT; Schema: public; Owner: cannvi
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
 
 
 --
--- Name: api_keys api_keys_pkey; Type: CONSTRAINT; Schema: public; Owner: cannvi
+-- Name: api_keys api_keys_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.api_keys
@@ -252,7 +252,7 @@ ALTER TABLE ONLY public.api_keys
 
 
 --
--- Name: apps apps_pkey; Type: CONSTRAINT; Schema: public; Owner: cannvi
+-- Name: apps apps_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.apps
@@ -260,7 +260,7 @@ ALTER TABLE ONLY public.apps
 
 
 --
--- Name: apps_users apps_users_pkey; Type: CONSTRAINT; Schema: public; Owner: cannvi
+-- Name: apps_users apps_users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.apps_users
@@ -268,7 +268,7 @@ ALTER TABLE ONLY public.apps_users
 
 
 --
--- Name: migration_versions migration_versions_pkey; Type: CONSTRAINT; Schema: public; Owner: cannvi
+-- Name: migration_versions migration_versions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.migration_versions
@@ -276,7 +276,7 @@ ALTER TABLE ONLY public.migration_versions
 
 
 --
--- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: cannvi
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.users
@@ -284,14 +284,14 @@ ALTER TABLE ONLY public.users
 
 
 --
--- Name: apps_uuid_idx; Type: INDEX; Schema: public; Owner: cannvi
+-- Name: apps_uuid_idx; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE UNIQUE INDEX apps_uuid_idx ON public.apps USING btree (uuid);
 
 
 --
--- Name: api_keys fk_cr_215e9fe564; Type: FK CONSTRAINT; Schema: public; Owner: cannvi
+-- Name: api_keys fk_cr_215e9fe564; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.api_keys
@@ -299,7 +299,7 @@ ALTER TABLE ONLY public.api_keys
 
 
 --
--- Name: apps_users fk_cr_606d320c60; Type: FK CONSTRAINT; Schema: public; Owner: cannvi
+-- Name: apps_users fk_cr_606d320c60; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.apps_users
@@ -307,7 +307,7 @@ ALTER TABLE ONLY public.apps_users
 
 
 --
--- Name: apps_users fk_cr_8491421a8f; Type: FK CONSTRAINT; Schema: public; Owner: cannvi
+-- Name: apps_users fk_cr_8491421a8f; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.apps_users
@@ -315,7 +315,7 @@ ALTER TABLE ONLY public.apps_users
 
 
 --
--- Name: apps fk_cr_995ae3be76; Type: FK CONSTRAINT; Schema: public; Owner: cannvi
+-- Name: apps fk_cr_995ae3be76; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.apps

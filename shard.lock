@@ -44,6 +44,10 @@ shards:
     github: crystal-loot/exception_page
     version: 0.1.4
 
+  factory:
+    github: imdrasil/factory
+    version: 0.1.4
+
   garnet_spec:
     github: amberframework/garnet-spec
     version: 0.2.3

@@ -1,5 +1,4 @@
-require "./spec_helper"
-require "../../src/models/api_key"
+require "../spec_helper"
 
 describe APIKey do
 end
