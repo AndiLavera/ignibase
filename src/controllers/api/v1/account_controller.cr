@@ -18,7 +18,7 @@ class API::V1::AccountController < ApplicationController
   # Allow a new user to register a new account
   def create
     account = User.new
-    if account.create_user_and_app_user!(resource_params)
+    if account.create_user_and_app_user!(resource_params.validate!)
       Kilt.render("src/json/api/v1/account/create.jbuilder")
     else
       Kilt.render("src/json/api/v1/account/errors/create.jbuilder")

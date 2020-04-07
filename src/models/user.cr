@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_and_belongs_to_many :apps, App, primary: :id, foreign: :user_id, association_primary: :uuid
 
+  # TODO: Remove in favor of json mapping
   def self.new_top_level(params : Hash(String, String | Bool | Nil)) : User
     user = User.new
     user.email = params["email"] if params["email"]
@@ -20,7 +21,7 @@ class User < ApplicationRecord
     user
   end
 
-  def create_user_and_app_user(params : Amber::Validators::Params)
+  def create_user_and_app_user(params : Hash(String, String | Bool | Nil))
     @first_name = params["first_name"] if params["first_name"]
     @last_name = params["last_name"] if params["last_name"]
     # TODO: validate_length of email to turn thise into a 1 liner
@@ -34,7 +35,7 @@ class User < ApplicationRecord
 
   # Creates a `User` & `AppsUser` & saves
   # Used for users to create new users in their project.
-  def create_user_and_app_user!(params : Amber::Validators::Params)
+  def create_user_and_app_user!(params : Hash(String, String | Bool | Nil))
     create_user_and_app_user(params)
 
     User.transaction do
@@ -45,11 +46,12 @@ class User < ApplicationRecord
 
   # Check if password & password_confirmation are the same,
   # then hashes the password for saving
-  def digest_password(params : Amber::Validators::Params)
+  def digest_password(params : Hash(String, String | Bool | Nil))
     password_confirmation = params["password_confirmation"]
+    unhashed_password = params["password"]
 
-    if params["password"] == password_confirmation
-      self.password = params["password"]
+    if unhashed_password && unhashed_password == password_confirmation
+      self.password = unhashed_password
     else
       errors.add(:password, "Passwords do not match.")
     end
